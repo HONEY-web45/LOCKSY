@@ -11,7 +11,7 @@ const client = new MongoClient(url);
 console.log(process.env.MONGO_URL);
 
 const app = express()
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
 
 
