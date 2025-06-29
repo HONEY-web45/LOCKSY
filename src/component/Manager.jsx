@@ -17,7 +17,7 @@ const Manager = () => {
 
   const getPasswords = async () => {
     
-    let req = await fetch(`${URL}/api?email=${encodeURIComponent(user.email)}?sub=${encodeURIComponent(user.sub)}`)
+    let req = await fetch(`${URL}/api?email=${encodeURIComponent(user.email)}&sub=${encodeURIComponent(user.sub)}`)
     let passwords = await req.json()
      setPasswordarray(passwords)
   }
