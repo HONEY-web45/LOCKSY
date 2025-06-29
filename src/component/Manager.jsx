@@ -17,7 +17,7 @@ const Manager = () => {
 
   const getPasswords = async () => {
     
-    let req = await fetch(`${URL}/?email=${encodeURIComponent(user.email)}`)
+    let req = await fetch(`${URL}/api?email=${encodeURIComponent(user.email)}`)
     let passwords = await req.json()
     
 
@@ -81,7 +81,7 @@ const Manager = () => {
       item.id !== id
     )
     setPasswordarray(array)
-    let a = await fetch(`${URL}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
+    let a = await fetch(`${URL}/delete`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
 
   }
   const Delete = async (id) => {
@@ -103,7 +103,7 @@ const Manager = () => {
         theme: "light",
         transition: Slide,
       });
-      let a = await fetch(`${URL}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
+      let a = await fetch(`${URL}/post`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
 
     }
 

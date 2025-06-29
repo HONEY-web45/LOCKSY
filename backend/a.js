@@ -33,7 +33,7 @@ const collection = db.collection('Passwords')
 
 
 
-app.post('/', async (req, res) => {
+app.post('/post', async (req, res) => {
   // 
   const password=req.body
   const doc=await collection.insertOne(password)
@@ -51,7 +51,7 @@ app.post('/', async (req, res) => {
   
   
 // })
-app.delete('/', async (req, res) => {
+app.delete('/delete', async (req, res) => {
   //  console.log(req.body);
   const password=req.body
   const doc=await collection.deleteOne(password)
@@ -60,7 +60,7 @@ app.delete('/', async (req, res) => {
   
 })
 
-app.get('/', async (req, res) => {
+app.get('/api', async (req, res) => {
   
    const { email } = req.query;
  
