@@ -21,6 +21,7 @@ const Manager = () => {
     let passwords = await req.json()
     
 
+console.log(user);
 
     setPasswordarray(passwords)
   }
@@ -103,7 +104,7 @@ const Manager = () => {
         theme: "light",
         transition: Slide,
       });
-      let a = await fetch(`${URL}/post`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
+      let a = await fetch(`${URL}/delete`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
 
     }
 
@@ -163,7 +164,7 @@ const Manager = () => {
     }
     else {
       setPasswordarray([...passwordarray, { ...form, id: uuidv4() }])
-      let a = await fetch(`${URL}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, id: uuidv4(), email: user.email }) })
+      let a = await fetch(`${URL}/post`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, id: uuidv4(), email: user.email }) })
 
       let b = await a.json()
       toast.success(' Password Saved Successfully', {

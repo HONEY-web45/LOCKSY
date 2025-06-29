@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// 🧠 Serve frontend from root `dist`
+
 
 app.use(cors())
 app.use(bodyparser.json())
