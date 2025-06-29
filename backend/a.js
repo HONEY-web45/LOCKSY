@@ -17,10 +17,7 @@ const port = process.env.PORT || 3000
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // 🧠 Serve frontend from root `dist`
-app.use(express.static(path.join(__dirname, '../dist')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
+
 app.use(cors())
 app.use(bodyparser.json())
 
@@ -42,17 +39,17 @@ app.post('/post', async (req, res) => {
   
 })
 // app.post('/data', async (req, res) => {
-// const collection = db.collection('userData')
-
-//   //  console.log(req.body);
-//   const data=req.body
-//   const doc=await collection.insertOne(data)
-//   console.log(doc);
+  // const collection = db.collection('userData')
+  
+  //   //  console.log(req.body);
+  //   const data=req.body
+  //   const doc=await collection.insertOne(data)
+  //   console.log(doc);
   
   
-// })
-app.delete('/delete', async (req, res) => {
-  //  console.log(req.body);
+  // })
+  app.delete('/delete', async (req, res) => {
+    //  console.log(req.body);
   const password=req.body
   const doc=await collection.deleteOne(password)
   
@@ -71,7 +68,10 @@ const arr=await collection.find({email:email}).toArray()
   res.json(arr)
 })
 
-
+app.use(express.static(path.join(__dirname, '../dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
 
 app.listen(port,'0.0.0.0', () => {
   console.log(`Example app listening on port ${port}`)
