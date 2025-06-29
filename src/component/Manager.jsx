@@ -99,10 +99,15 @@ const Manager = () => {
         theme: "light",
         transition: Slide,
       });
-      setPasswordarray(array)
       let a = await fetch(`${URL}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
-      
-
+      let b=await a.json()
+      if(b.success){
+      setPasswordarray(b.data)
+    }
+    else if(b.success===false){
+      toast.error(b.message, {
+        position: "top-right",})
+      }
     }
 
   }
