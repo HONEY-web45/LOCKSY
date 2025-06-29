@@ -4,14 +4,24 @@ import './index.css'
 import App from './App.jsx'
 import Navbar from './component/Navbar.jsx'
 import Footer from './component/Footer.jsx'
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { Auth0Provider } from '@auth0/auth0-react';
+import AuthGuard from './component/Authguard.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+   <Auth0Provider
+    domain="dev-t4avb1ceyth58eqc.us.auth0.com"
+    clientId="4SZ5BOy7Mr271UzzYwxXsR9SkAxQUYr1"
+    authorizationParams={{
+      redirect_uri:`${ window.location.origin}`
+    }}
+    >
+  <AuthGuard>
     <Navbar/>
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-  <App />
-</GoogleOAuthProvider>
+
+     <App />
     <Footer/>
+    </AuthGuard>
+  </Auth0Provider>
   </StrictMode>,
 )
 

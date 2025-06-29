@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col py-10 text-center items-center justify-center px-6">
+    <div className="min-h-screen bg-gray-800  text-white flex flex-col py-10 text-center items-center justify-center px-6">
       <h1 className="text-4xl font-bold mb-4"> <span>About </span>
          <span className='text-green-400'>&lt;</span>
          Lock

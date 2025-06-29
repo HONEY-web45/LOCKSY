@@ -2,15 +2,16 @@ import express from 'express'
 import cors from "cors"
 import bodyparser from "body-parser"
 import { MongoClient } from 'mongodb'
+import dotenv from 'dotenv'
 
-
-
+dotenv.config()
 // Connection URL
-const url = 'mongodb://localhost:27017/';
+const url = process.env.MONGO_URL;
 const client = new MongoClient(url);
+console.log(process.env.MONGO_URL);
 
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 
 
@@ -34,6 +35,16 @@ app.post('/', async (req, res) => {
   res.send({message:"password saved successfully"})
   
 })
+// app.post('/data', async (req, res) => {
+// const collection = db.collection('userData')
+
+//   //  console.log(req.body);
+//   const data=req.body
+//   const doc=await collection.insertOne(data)
+//   console.log(doc);
+  
+  
+// })
 app.delete('/', async (req, res) => {
   //  console.log(req.body);
   const password=req.body
@@ -44,7 +55,13 @@ app.delete('/', async (req, res) => {
 })
 
 app.get('/', async (req, res) => {
-const arr=await collection.find({}).toArray()
+  
+   const { email } = req.query;
+  console.log(email);
+  
+  
+    
+const arr=await collection.find({email:email}).toArray()
   res.json(arr)
 })
 

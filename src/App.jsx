@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes}  from 'react-router-dom'
 import Home from './component/Home'
 import About from './component/About'
 import ContactPage from './component/Contact'
-import Login from './component/Login'
+import PrivateRoute from './component/Private'
 function App() {
 
 
@@ -17,9 +17,10 @@ function App() {
 <Routes>
   <Route path="/" element={<Home/>}/>
   <Route path="/about" element={<About/>}/>
-  <Route path="/pass" element={<Manager/>}/>
+ 
+  <Route path="/pass" element={<PrivateRoute children={<Manager/>}/>}/>
   <Route path="/contact" element={<ContactPage/>}/>
-  <Route path="/login" element={<Login/>}/>
+  
   
 </Routes>
 

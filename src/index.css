@@ -57,3 +57,37 @@ padding-left: 5vw;
 padding-right: 5vw;
       }
     }
+    @media  screen and (max-width: 485px){
+      .col{
+        flex-direction: column;
+      }
+
+      .hid{
+        display: none;
+
+      }
+      .show{
+        display: block;
+      }
+      .fl{
+        display: flex;
+      }
+      .pad1{
+        
+        padding-right: 4rem;
+      }
+    }
+    @media  screen and (min-width: 485px){
+     
+      .hid1{
+        display: none;
+
+      }
+    }
+    @media  screen and (max-width: 320px){
+     
+     .gap2{
+      gap: 0.5rem;
+     }
+    }
+   
