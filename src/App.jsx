@@ -18,7 +18,7 @@ function App() {
   <Route path="/" element={<Home/>}/>
   <Route path="/about" element={<About/>}/>
  
-  <Route path="/pass" element={<PrivateRoute children={<Manager/>}/>}/>
+  <Route path="/pass" element={ <PrivateRoute><Manager/></PrivateRoute>}/>
   <Route path="/contact" element={<ContactPage/>}/>
   
   
