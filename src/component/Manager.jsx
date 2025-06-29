@@ -88,8 +88,6 @@ const Manager = () => {
     let c = confirm("Do you really want to delete password")
     if (c) {
 
-      setPasswordarray(array)
-      let a = await fetch(`${URL}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
       toast.success(' Password Deleted Successfully', {
         position: "top-right",
         autoClose: 2000,
@@ -101,6 +99,9 @@ const Manager = () => {
         theme: "light",
         transition: Slide,
       });
+      setPasswordarray(array)
+      let a = await fetch(`${URL}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
+      
 
     }
 

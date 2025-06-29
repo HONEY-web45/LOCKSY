@@ -44,10 +44,7 @@ app.post('/post', async (req, res) => {
     //  console.log(req.body);
   const password=req.body
   const doc=await collection.deleteOne(password)
-  
-  
-  
-})
+ })
 
 app.get('/api', async (req, res) => {
   const { email } = req.query.email;

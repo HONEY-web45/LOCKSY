@@ -18,9 +18,11 @@ const HomePage = () => {
       <p className="text-lg text-slate-200 mb-6">Your Own Password Manager to Store & Secure Credentials.</p>
 
       <div className="flex space-x-4">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md" onClick={() => loginWithRedirect()}>
+      {isAuthenticated? <a href="/pass"><button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md" >
+         start here
+        </button></a> : <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md" onClick={() => loginWithRedirect()}>
           start here
-        </button>
+        </button>}
         
         <a href="/about" className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded-md">
           About Us
