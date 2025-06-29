@@ -3,7 +3,8 @@ import cors from "cors"
 import bodyparser from "body-parser"
 import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
-
+import path from 'path'
+import { fileURLToPath } from 'url';
 dotenv.config()
 // Connection URL
 const url = process.env.MONGO_URL;
@@ -13,8 +14,13 @@ console.log(process.env.MONGO_URL);
 const app = express()
 const port = process.env.PORT || 3000
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-
+// 🧠 Serve frontend from root `dist`
+app.use(express.static(path.join(__dirname, '../dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
 app.use(cors())
 app.use(bodyparser.json())
 
