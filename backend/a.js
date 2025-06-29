@@ -60,13 +60,10 @@ app.post('/post', async (req, res) => {
 app.get('/api', async (req, res) => {
   
    const { email } = req.query;
- 
-  
-  
-    
 const arr=await collection.find({email:email}).toArray()
   res.json(arr)
 })
+
 
 app.use(express.static(path.join(__dirname, '../dist')));
 app.get('*', (req, res) => {

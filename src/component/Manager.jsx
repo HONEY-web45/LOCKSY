@@ -21,18 +21,18 @@ const Manager = () => {
     let passwords = await req.json()
     
 
-console.log(user);
+
 
     setPasswordarray(passwords)
   }
 
 
   useEffect(() => {
+    console.log(user);
     if (user && user.email) {
 
       getPasswords()
     }
-
   }, [user])
 
 
@@ -93,6 +93,7 @@ console.log(user);
     if (c) {
 
       setPasswordarray(array)
+      let a = await fetch(`${URL}/delete`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
       toast.success(' Password Deleted Successfully', {
         position: "top-right",
         autoClose: 2000,
@@ -104,7 +105,6 @@ console.log(user);
         theme: "light",
         transition: Slide,
       });
-      let a = await fetch(`${URL}/delete`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
 
     }
 
@@ -241,7 +241,7 @@ console.log(user);
                     <td className='py-2 sm:text-center w-[27vw] border  border-white  text-left sm:text-lg'>
                       <div className='flex justify-start   items-center gap-4 h-auto whitespace-normal mx-4   '>
 
-                        <a href={htt + item.Site} target="_blank" rel="noopener noreferrer" className=' flex flex-wrap text-wrap break-words   h-auto  ' onClick={() => click(item.Site)}> <span className='text-wrap w1 w-[25vw] md:w-[24vw]'>{item.Site} </span> </a>
+                        <a href={htt + item.Site} target="_blank" rel="noopener noreferrer" className=' flex flex-wrap text-wrap break-words   h-auto  ' onClick={() => click(item.Site)}> <span className='text-wrap text-center w1 w-[25vw] md:w-[24vw]'>{item.Site} </span> </a>
                         <div className='cursor pointer hidden ' onClick={() => copy(item.Site)}>
 
                           <lord-icon
