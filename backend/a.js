@@ -43,27 +43,13 @@ app.post('/post', async (req, res) => {
   app.delete('/', async (req, res) => {
     //  console.log(req.body);
   const password=req.body
-  const email = password.email;
-  const sub = password.sub;
-
-  try {
-    const deleteResult = await collection.deleteOne(password);
-
-    if (deleteResult.deletedCount === 1) {
-      if(email){
-      const updatedList = await collection.find({ email: email }).toArray();
-      res.json( {success:true,data:  updatedList } )}
-     else if(sub){
-      const updatedList = await collection.find({ sub: sub }).toArray();
-      res.json({success:true,data:  updatedList })}
-    } else {
-      res.status(404).json({ success: false, message: 'Document not found' });
-    }
-  } catch (err) {
-    console.error('Delete error:', err);
-    res.status(500).json({ success: false, message: 'Internal Server Error' });
-  }
- })
+  const doc=await collection.deleteOne(password)
+  
+  
+    res.json({result:doc.deletedCount,message:"password deleted successfully"})
+  
+  
+})
 
 app.get('/api', async (req, res) => {
   const { email } = req.query.email;
