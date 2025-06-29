@@ -24,11 +24,11 @@ const Manager = () => {
 
 
   useEffect(() => {
-    console.log(user);
-    if (user) {
+    
+    
 
       getPasswords()
-    }
+    
   }, [user])
 
 
@@ -88,9 +88,8 @@ const Manager = () => {
     let c = confirm("Do you really want to delete password")
     if (c) {
 
-      let a = await fetch(`${URL}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
-      if(a.result===1){
-        setPasswordarray(array)
+      
+      setPasswordarray(array)
       toast.success(' Password Deleted Successfully', {
         position: "top-right",
         autoClose: 2000,
@@ -102,8 +101,9 @@ const Manager = () => {
         theme: "light",
         transition: Slide,
       });
+      let a = await fetch(`${URL}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
       
-    }
+    
 
     }
 
