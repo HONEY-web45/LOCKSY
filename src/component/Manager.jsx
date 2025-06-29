@@ -10,26 +10,22 @@ import { Slide } from 'react-toastify';
 
 const Manager = () => {
   const { user, loginWithRedirect, isAuthenticated, isLoading, logout } = useAuth0();
-  const [form, setform] = useState({ email: user, Site: "", Username: "", Password: "" })
+  const [form, setform] = useState({ email: "",sub:"", Site: "", Username: "", Password: "" })
   const [passwordarray, setPasswordarray] = useState([])
   const [htt, setHtt] = useState({})
   const URL = import.meta.env.VITE_BASE_URL
 
   const getPasswords = async () => {
     
-    let req = await fetch(`${URL}/api?email=${encodeURIComponent(user.email)}`)
+    let req = await fetch(`${URL}/api?email=${encodeURIComponent(user.email)}?sub=${encodeURIComponent(user.sub)}`)
     let passwords = await req.json()
-    
-
-
-
-    setPasswordarray(passwords)
+     setPasswordarray(passwords)
   }
 
 
   useEffect(() => {
     console.log(user);
-    if (user && user.email) {
+    if (user) {
 
       getPasswords()
     }
@@ -41,7 +37,7 @@ const Manager = () => {
     if (e.includes("https://")) {
       setHtt("")
     }
-    else if (!e.includes("http://")) {
+    else if (!e.includes("https://")) {
 
       setHtt("https://")
     }
@@ -82,7 +78,7 @@ const Manager = () => {
       item.id !== id
     )
     setPasswordarray(array)
-    let a = await fetch(`${URL}/delete`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
+    let a = await fetch(`${URL}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
 
   }
   const Delete = async (id) => {
@@ -93,7 +89,7 @@ const Manager = () => {
     if (c) {
 
       setPasswordarray(array)
-      let a = await fetch(`${URL}/delete`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
+      let a = await fetch(`${URL}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
       toast.success(' Password Deleted Successfully', {
         position: "top-right",
         autoClose: 2000,
@@ -164,7 +160,7 @@ const Manager = () => {
     }
     else {
       setPasswordarray([...passwordarray, { ...form, id: uuidv4() }])
-      let a = await fetch(`${URL}/post`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, id: uuidv4(), email: user.email }) })
+      let a = await fetch(`${URL}/post`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, id: uuidv4(), email: user.email,sub:user.sub }) })
 
       let b = await a.json()
       toast.success(' Password Saved Successfully', {

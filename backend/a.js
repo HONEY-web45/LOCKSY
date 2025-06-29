@@ -5,6 +5,7 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import path from 'path'
 import { fileURLToPath } from 'url';
+import { log } from 'console'
 dotenv.config()
 // Connection URL
 const url = process.env.MONGO_URL;
@@ -38,17 +39,8 @@ app.post('/post', async (req, res) => {
   res.send({message:"password saved successfully"})
   
 })
-// app.post('/data', async (req, res) => {
-  // const collection = db.collection('userData')
-  
-  //   //  console.log(req.body);
-  //   const data=req.body
-  //   const doc=await collection.insertOne(data)
-  //   console.log(doc);
-  
-  
-  // })
-  app.delete('/delete', async (req, res) => {
+
+  app.delete('/', async (req, res) => {
     //  console.log(req.body);
   const password=req.body
   const doc=await collection.deleteOne(password)
@@ -58,10 +50,18 @@ app.post('/post', async (req, res) => {
 })
 
 app.get('/api', async (req, res) => {
-  
-   const { email } = req.query;
+  const { email } = req.query.email;
+  const { sub } = req.query.sub;
+  if(email){
+   
 const arr=await collection.find({email:email}).toArray()
-  res.json(arr)
+res.json(arr)}
+
+else if(sub){
+const arr=await collection.find({sub:sub}).toArray()
+res.json(arr)
+  
+}
 })
 
 
