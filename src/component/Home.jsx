@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 const HomePage = () => {
    const {user, loginWithRedirect,isAuthenticated, isLoading,logout  } = useAuth0();
-   console.log(user);
+   
    
   return (
     <div className="min-h-screen bg-gray-800 text-white text-center flex flex-col items-center justify-center px-4" >

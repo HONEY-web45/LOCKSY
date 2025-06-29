@@ -9,7 +9,7 @@ dotenv.config()
 // Connection URL
 const url = process.env.MONGO_URL;
 const client = new MongoClient(url);
-console.log(process.env.MONGO_URL);
+
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -34,10 +34,10 @@ const collection = db.collection('Passwords')
 
 
 app.post('/', async (req, res) => {
-  //  console.log(req.body);
+  // 
   const password=req.body
   const doc=await collection.insertOne(password)
-  console.log(doc);
+  
   res.send({message:"password saved successfully"})
   
 })
@@ -55,7 +55,7 @@ app.delete('/', async (req, res) => {
   //  console.log(req.body);
   const password=req.body
   const doc=await collection.deleteOne(password)
-  console.log(doc);
+  
   
   
 })
@@ -63,7 +63,7 @@ app.delete('/', async (req, res) => {
 app.get('/', async (req, res) => {
   
    const { email } = req.query;
-  console.log(email);
+ 
   
   
     

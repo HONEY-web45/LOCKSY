@@ -10,7 +10,7 @@ const Navbar = () => {
  
   const toggle = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen);
+    
     
   }
   const toggle1 = () => {

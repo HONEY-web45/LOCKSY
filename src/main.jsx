@@ -10,9 +10,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
    <Auth0Provider
     domain="dev-t4avb1ceyth58eqc.us.auth0.com"
-    clientId="4SZ5BOy7Mr271UzzYwxXsR9SkAxQUYr1"
+    clientId="OAn9r6obUgmTZ2StuVIZbzcxlTQtxGQN"
     authorizationParams={{
-      redirect_uri:`${ window.location.origin}`
+      redirect_uri: window.location.origin
     }}
     >
   <AuthGuard>

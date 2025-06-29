@@ -16,10 +16,10 @@ const Manager = () => {
   const URL = import.meta.env.VITE_BASE_URL
 
   const getPasswords = async () => {
-    console.log(user);
+    
     let req = await fetch(`${URL}/?email=${encodeURIComponent(user.email)}`)
     let passwords = await req.json()
-    console.log(passwords);
+    
 
 
     setPasswordarray(passwords)
@@ -177,7 +177,7 @@ const Manager = () => {
         theme: "light",
         transition: Slide,
       });
-      console.log(b, user);
+      
       setform({ Site: "", Username: "", Password: "", })
 
     }

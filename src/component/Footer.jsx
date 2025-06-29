@@ -10,7 +10,7 @@ const Footer = () => {
             </div>
             <div className='flex items-center gap-2 text-lg font-medium'>
                 <span> Created with  </span>
-                <span> <img src="/public/heart.png" alt="" className='w-10' /></span>
+                <span> <img src="/heart.png" alt="" className='w-10' /></span>
                 <span>by  Honey</span>
             </div>
         </div>
