@@ -72,7 +72,7 @@ const Navbar = () => {
 
         <div className={`fixed top-0 left-0 h-full w-48 bg-gradient-to-r from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f] text-white  py-3 transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
 <div className='flex px-3 items-center justify-between mb-2'>
-       <h5 className="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Menu</h5>   <button onClick={onclose} className=" text-gray-500 text-3xl  focus:outline-none">&times;</button></div>
+       <h5 className="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Menu</h5>   <button onClick={onclose} className=" text-gray-500 text-xl p-1 hover:bg-gray-800 rounded-xl focus:outline-none">&lt;&lt;</button></div>
     <ul className="flex flex-col gap-1 px-4">
       <li className='rounded-lg dark:text-white py-2 pl-2 hover:bg-gray-100 dark:hover:bg-gray-700  '><a href="/" className='flex items-center gap-5 '><span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
