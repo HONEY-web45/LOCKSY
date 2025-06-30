@@ -111,7 +111,7 @@ const Navbar = () => {
 
 </span>Login</button></li>}
     </ul>
-     <div className="p-4 text-center text-lg font-semibold   w-full bottom-4 absolute text-gray-400 font-mono tracking-wide ">
+     <div className="p-4 text-center text-lg font-semibold   w-full bottom-4 absolute text-gray-100 font-mono tracking-wide ">
       <div className='hover:scale-105 animate-pulse ' title="v1.0.2">
     <span className='text-green-400'>&lt;</span>
           Lock
