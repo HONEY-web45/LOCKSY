@@ -60,8 +60,8 @@ app.post('/post', async (req, res) => {
 })
 
 app.get('/api', async (req, res) => {
-  const { email } = req.query.email;
-  const { sub } = req.query.sub;
+  const { email,sub } = req.query;
+  
   if(email){
    
 const arr=await collection.find({email:email}).toArray()
