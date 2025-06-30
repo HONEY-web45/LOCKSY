@@ -62,15 +62,14 @@ app.post('/post', async (req, res) => {
 app.get('/api', async (req, res) => {
   const { email,sub } = req.query;
   
-  if(email){
-   
-const arr=await collection.find({email:email}).toArray()
-res.json(arr)}
+   if (email && email !== "undefined" && email.trim() !== "") {
+  const arr = await collection.find({email: email }).toArray();
+  return res.json(arr);
+}
 
-else if(sub){
-const arr1=await collection.find({sub:sub}).toArray()
-res.json(arr1)
-  
+if (sub && sub !== "undefined" && sub.trim() !== "") {
+  const arr = await collection.find({ sub:sub }).toArray();
+  return res.json(arr);
 }
 })
 
