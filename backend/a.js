@@ -68,8 +68,8 @@ const arr=await collection.find({email:email}).toArray()
 res.json(arr)}
 
 else if(sub){
-const arr=await collection.find({sub:sub}).toArray()
-res.json(arr)
+const arr1=await collection.find({sub:sub}).toArray()
+res.json(arr1)
   
 }
 })

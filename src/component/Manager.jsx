@@ -13,17 +13,20 @@ const Manager = () => {
   const [form, setform] = useState({ email: "",sub:"", Site: "", Username: "", Password: "" })
   const [passwordarray, setPasswordarray] = useState([])
   const [htt, setHtt] = useState({})
-const [load, setload] = useState(true)
+const [loading, setloading] = useState(true)
 
 
   const URL = import.meta.env.VITE_BASE_URL
 
   const getPasswords = async () => {
-    setload(true)
+    setloading(true)
     let req = await fetch(`${URL}/api?email=${encodeURIComponent(user.email)}&sub=${encodeURIComponent(user.sub)}`)
     let passwords = await req.json()
      setPasswordarray(passwords)
-     setload(false)
+  
+     setloading(false)
+     console.log(user);
+     
   }
 
 
@@ -226,7 +229,7 @@ if (data.success) {
         </div>
         <div className="passwords  sm:px-48 flex flex-col items-center over">
           <h2 className='font-bold text-2xl p-3 text-center'>Your Passwords</h2>
-          {load ? 
+          {loading ? 
   <LoadingDots />:!passwordarray.length ? <div className='text-lg font-medium '>No Passwords to show</div>
          : <table className="table-auto mx-[4vw] sm:mx-[10vw] w-[80vw] rounded-xl   overflow-hidden width mar">
             <thead className='bg-emerald-600 text-white border border-emerald-300 rounded-lg shadow shadow-emerald-500/30  '>
