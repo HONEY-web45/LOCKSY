@@ -25,7 +25,7 @@ const [loading, setloading] = useState(true)
      setPasswordarray(passwords)
   
      setloading(false)
-     console.log(user);
+  
      
   }
 
@@ -104,7 +104,7 @@ const [loading, setloading] = useState(true)
       
     
 let data = await a.json();
-console.log(data);
+
 
 if (data.success) {
   setPasswordarray(array);

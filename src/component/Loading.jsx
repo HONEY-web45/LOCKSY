@@ -5,7 +5,7 @@ export default function LoadingDots() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDots((prev) => (prev.length === 3 ? "." : prev + "."));
+      setDots((prev) => (prev.length === 2 ? "" : prev + "."));
     }, 500); // adjust speed here
 
     return () => clearInterval(interval);
@@ -13,7 +13,7 @@ export default function LoadingDots() {
 
   return (
     <p className="text-gray-100 font-medium text-base">
-      Loading<span className="inline-block w-4">{dots}</span>
+      Loading.<span className="inline-block w-4">{dots}</span>
     </p>
   );
 }

@@ -8,9 +8,9 @@ const Footer = () => {
                 Lock
                 <span className='text-green-400'>sy/&gt;</span>
             </div>
-            <div className='flex items-center gap-2 text-lg font-medium'>
-                <span> Created with  </span>
-                <span> <img src="/heart.png" alt="" className='w-10' /></span>
+            <div className='flex items-center gap-1 text-lg font-medium'>
+                <span> Created with</span>
+                <span className='text-2xl'>🔐</span>
                 <span>by  Honey</span>
             </div>
         </div>
