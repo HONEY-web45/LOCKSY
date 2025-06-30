@@ -13,7 +13,10 @@ createRoot(document.getElementById('root')).render(
     clientId="HCZvgLEvNpSKVgKP3JLekyxBHRBQG9v0"
     authorizationParams={{
       redirect_uri:`${window.location.origin}/pass`
+      
     }}
+    cacheLocation="localstorage"
+  useRefreshTokens={true}
     >
   <AuthGuard>
     <Navbar/>
