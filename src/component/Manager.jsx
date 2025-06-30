@@ -81,29 +81,30 @@ const Manager = () => {
     let a = await fetch(`${URL}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
 
   }
-  const Delete = async (id) => {
+
+
+
+
+   const Delete = async (id) => {
     let array = passwordarray.filter((item) =>
       item.id !== id
-    )
+    
+  )
+ 
     let c = confirm("Do you really want to delete password")
     if (c) {
-
-      
-      setPasswordarray(array)
-      toast.success(' Password Deleted Successfully', {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Slide,
-      });
       let a = await fetch(`${URL}`, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: id }) })
       
     
+let data = await a.json();
+console.log(data);
+
+if (data.success) {
+  setPasswordarray(array);
+  toast.success(data.message);
+} else {
+  toast.error(data.message);
+}
 
     }
 
@@ -162,9 +163,9 @@ const Manager = () => {
       });
     }
     else {
-      setPasswordarray([...passwordarray, { ...form, id: uuidv4() }])
-      let a = await fetch(`${URL}/post`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, id: uuidv4(), email: user.email,sub:user.sub }) })
-
+      const newid= uuidv4();
+      setPasswordarray([...passwordarray, { ...form, id: newid }])
+      let a = await fetch(`${URL}/post`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, id: newid, email: user.email,sub:user.sub }) })
       let b = await a.json()
       toast.success(' Password Saved Successfully', {
         position: "top-right",

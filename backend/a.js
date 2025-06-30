@@ -40,13 +40,21 @@ app.post('/post', async (req, res) => {
   
 })
 
+
   app.delete('/', async (req, res) => {
     //  console.log(req.body);
-  const password=req.body
-  const doc=await collection.deleteOne(password)
+ try {
+    const { id } = req.body;
+
+
+    const doc = await collection.deleteOne({ id }); // Just match by UUID
+    res.json({ success: doc.deletedCount === 1, message: doc.deletedCount === 1 ? "Password deleted successfully" : "Could not delete" });
+  } catch (error) {
+    console.error("Delete error:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
   
-  
-    res.json({result:doc.deletedCount,message:"password deleted successfully"})
+   
   
   
 })
