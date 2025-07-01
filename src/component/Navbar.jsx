@@ -53,7 +53,7 @@ const Navbar = () => {
   <img src={user.picture} alt="User avatar" className="w-full h-full object-cover" onError={(e) => { e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.nickname)}&background=random&length=1`; }} />
 </div> 
 <button className='text-gray-900 hidd bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 md:px-2 lg:px-4 py-1.5   dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 flex items-center gap-2'><img  src={user.picture} alt="profile"className='rounded-full '   onError={(e) => { e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.nickname)}&background=random&length=1`; }} height={25} width={25} /> <span className=''>{ user.nickname || user.email} </span></button>
-        <div id="userDropdown" className={`absolute ${isOpen1?"block":"hidden"}  hid1  -right-4 top-8 mt-2 w-40 bg-gray-900 rounded-md shadow-lg  z-50 text-sm`}>
+        <div id="userDropdown" className={`absolute ${isOpen1?"block":"hidden"}  hid1  -right-4 top-8 mt-2 w-48 bg-gray-900 rounded-md shadow-lg  z-50 text-sm`}>
     <div className="px-4 py-3 border-b border-gray-200">
       <p className="font-semibold text-white ">Hey, {user.nickname}</p>
     </div>
@@ -66,7 +66,7 @@ const Navbar = () => {
    
  
 </div>
-         <button className='text-gray-900 hid bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2   dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700' onClick={()=>logout()}>logout</button> 
+         <button className='text-gray-900 hidd bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2   dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700' onClick={()=>logout()}>logout</button> 
          </div>:<button className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2   dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700' onClick={()=>loginWithRedirect()}>login</button>}
 
 
