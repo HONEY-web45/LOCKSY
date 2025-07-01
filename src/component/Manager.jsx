@@ -197,13 +197,8 @@ if (data.success) {
 
 
       <div className=' flex flex-col gap-2 py-5 '>
-        <h1 className='font-bold text-3xl text-center '>
-
-          <span className='text-green-400'>&lt;</span>
-          Lock
-          <span className='text-green-400'>sy/&gt;</span>
-        </h1>
-        <p className='text-center text-lg font-medium text-green-400'>Your Own Password Manager</p>
+      
+        <p className='text-center text-xl font-medium text-green-400'>Your Own Password Manager</p>
 
         <div className='flex flex-col gap-5   my-6 mx-10 sm:mx-20 md:mx-24 lg:mx-52'>
           <input type="text" name='Site' placeholder='Enter Website URL' value={form.Site} onChange={handle} className=' border-green-400 placeholder:text-gray-500 text-black border-[2px] px-4 p-2 w-full  rounded-full' required />
