@@ -60,7 +60,7 @@ app.post('/post', async (req, res) => {
 })
 
 app.get('/api/healthcheck', async (req, res) => {
- res.send("ok",{status:200})
+ res.send("ok").status(200);
 console.log("✅ Healthcheck ping received at", new Date().toISOString());
 })
 
