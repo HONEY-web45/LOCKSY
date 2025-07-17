@@ -59,6 +59,12 @@ app.post('/post', async (req, res) => {
   
 })
 
+app.get('/api/healthcheck', async (req, res) => {
+ res.send("ok",{status:200})
+console.log("✅ Healthcheck ping received at", new Date().toISOString());
+})
+
+
 app.get('/api', async (req, res) => {
   const { email,sub } = req.query;
   
