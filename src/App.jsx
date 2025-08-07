@@ -12,7 +12,19 @@ function App() {
 
 
   return (
-    <>
+    <div className='relative bg-black/40' >
+    <video
+  autoPlay
+  loop
+  
+  muted
+  playsInline
+  className="fixed top-0 left-0 w-full h-full object-cover z-[-1]"
+>
+  <source src="b6.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+{/* <img src="b5.gif" alt="" className='fixed top-0 left-0 w-full h-full object-cover z-[-1]'  /> */}
 <Router>
 <Routes>
   <Route path="/" element={<Home/>}/>
@@ -30,7 +42,7 @@ function App() {
 
 
  
-    </>
+    </div>
   )
 }
 

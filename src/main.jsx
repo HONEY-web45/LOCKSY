@@ -6,6 +6,7 @@ import Navbar from './component/Navbar.jsx'
 import Footer from './component/Footer.jsx'
 import { Auth0Provider } from '@auth0/auth0-react';
 import AuthGuard from './component/Authguard.jsx'
+import Leniss from './component/Leniss.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
    <Auth0Provider
@@ -20,8 +21,10 @@ createRoot(document.getElementById('root')).render(
     >
   <AuthGuard>
     <Navbar/>
+      <Leniss>
 
      <App />
+    </Leniss>
     <Footer/>
     </AuthGuard>
   </Auth0Provider>

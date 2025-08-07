@@ -5,7 +5,7 @@ const HomePage = () => {
    
    
   return (
-    <div className="min-h-screen bg-gray-800 text-white text-center flex flex-col items-center justify-center px-4" >
+    <div className="min-h-screen bg-black/20 text-white text-center flex flex-col items-center justify-center px-4" >
       <h1 className="text-4xl font-bold mb-4 text-slate-200 text-center"><span>Welcome to </span>
          
 
