@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react'
+import gsap from 'gsap';
 import { v4 as uuidv4 } from 'uuid';
 import { useAuth0 } from "@auth0/auth0-react";
 import { ToastContainer, toast } from 'react-toastify';
@@ -14,7 +14,7 @@ const Manager = () => {
   const [passwordarray, setPasswordarray] = useState([])
   const [htt, setHtt] = useState({})
 const [loading, setloading] = useState(true)
-
+const cur=useRef()
 
   const URL = import.meta.env.VITE_BASE_URL
 
@@ -28,6 +28,36 @@ const [loading, setloading] = useState(true)
   
      
   }
+useLayoutEffect(() => {
+ const ctx=gsap.context(()=>{
+const tl=gsap.timeline()
+tl.from(".a",{
+ y: 100,
+  opacity: 0,
+  duration: .7,
+  // ease: "power4.out"
+})
+.from("input",{
+scale:0,
+stagger:.2,
+duration:.3
+
+},"-=.3")
+.from(".b",{
+  y:100,
+  opacity:0,
+  duration:.3
+},"-=.1")
+.from(".c",{
+  scale:0,
+  opacity:0,
+  duration:.3
+},"-=.15")
+
+ },cur)
+
+  return () =>ctx.revert() 
+}, [])
 
 
   useEffect(() => {
@@ -191,25 +221,25 @@ if (data.success) {
     }
   }
   return (
-    <div className='min-h-screen bg-gray-800/40 text-white' >
+    <div ref={cur} className='min-h-screen bg-gray-800/40 text-white' >
 
 
 
 
       <div className=' flex flex-col gap-2 py-5 '>
       
-        <p className='text-center text-2xl font-medium text-[#37e5f9fb]'>Your Own Password Manager</p>
+        <p className='text-center text-2xl font-medium text-[#37e5f9fb] a'>Your Own Password Manager</p>
 
         <div className='flex flex-col gap-5   my-6 mx-10 sm:mx-20 md:mx-24 lg:mx-52'>
-          <input type="text" name='Site' placeholder='Enter Website URL' value={form.Site} onChange={handle} className=' border-blue-400/40 placeholder:text-gray-400  border bg-gray-700/50 px-4 p-2 w-full  rounded-xl' required />
+          <input type="text" name='Site' placeholder='Enter Website URL' value={form.Site} onChange={handle} className=' border-blue-400/30 placeholder:text-gray-400  border bg-gray-700/50 px-4 p-2 w-full  rounded-xl' required />
           <div className='flex flex-col md:flex-row gap-5'>
 
-            <input type="text" name='Username' placeholder='Enter Username' className='  border-blue-400/40 border-[2px] px-4 p-2 w-full md:w-[75%] placeholder:text-gray-400  bg-gray-700/50 rounded-xl' value={form.Username} onChange={handle} required />
-            <input type="password" placeholder='Enter Password' name="Password" id="password" className=' border-blue-400/40 placeholder:text-gray-400  border px-4 p-2 w-full md:w-[25%] bg-gray-700/50  rounded-xl' value={form.Password}  onChange={handle} required />
+            <input type="text" name='Username' placeholder='Enter Username' className='  border-blue-400/30 border px-4 p-2 w-full md:w-[75%] placeholder:text-gray-400  bg-gray-700/50 rounded-xl' value={form.Username} onChange={handle} required />
+            <input type="password" placeholder='Enter Password' name="Password" id="password" className=' border-blue-400/30 placeholder:text-gray-400  border px-4 p-2 w-full md:w-[25%] bg-gray-700/50  rounded-xl' value={form.Password}  onChange={handle} required />
           </div>
 
 
-          <button className='bg-green-500 disabled:bg-green-300  border-green-900 border-2 hover:bg-green-600 text-lg w-fit mx-auto py-2 pad px-10 rounded-full text-white font-bold flex items-center gap-2' onClick={save}  >
+          <button className='b bg-green-500 disabled:bg-green-300  border-green-900 border-2 hover:bg-green-600 text-lg w-fit mx-auto py-2 pad px-10 rounded-full text-white font-bold flex items-center gap-2' onClick={save}  >
             <span className='hid'>
               <lord-icon
                 src="https://cdn.lordicon.com/jgnvfzqg.json"
@@ -222,12 +252,12 @@ if (data.success) {
             Add </button>
 
         </div>
-        <div className="passwords  sm:px-48 flex flex-col items-center over">
-          <h2 className='font-bold text-2xl p-3 text-center'>Your Passwords</h2>
+        <div className="passwords  sm:px-48 flex flex-col items-center over c">
+          <h2 className='font-bold text-2xl p-3 text-center '>Your Passwords</h2>
           {loading ? 
-  <LoadingDots />:!passwordarray.length ? <div className='text-lg font-medium  '>No Passwords to show</div>
+  <LoadingDots />:!passwordarray.length ? <div className='text-lg font-medium ' id='d'>No Passwords to show</div>
          : <table className="table-auto mx-[4vw] sm:mx-[10vw] w-[80vw] rounded-xl   overflow-hidden width mar">
-            <thead className='bg-blue-200/20 text-white border  border-blue-300/50 rounded-lg shadow shadow-emerald-500/30  '>
+            <thead className='bg-blue-200/20 text-white border  border-blue-300/50 rounded-lg shadow  e '>
               <tr className=' '>
                 <th className='py-2 text-sm sm:text-lg border-r'>Site</th>
 
@@ -236,11 +266,11 @@ if (data.success) {
                 <th className='py-2 px-2 text-sm sm:text-lg'>Actions</th>
               </tr>
             </thead>
-            <tbody className='bg-gray-800/30 text-emerald-900 border   rounded-lg shadow shadow-emerald-500/30  '>
+            <tbody className='bg-gray-800/30 text-emerald-900 border   rounded-lg shadow  '>
 
               {passwordarray.map((item, i) => {
                 return (
-                  <tr key={i} className='text-white' >
+                  <tr key={i} className='text-white f' >
                     <td className='py-2 sm:text-center w-[27vw] border border-gray-600   text-left sm:text-lg'>
                       <div className='flex justify-start   items-center gap-4 h-auto whitespace-normal mx-4   '>
 
@@ -249,8 +279,8 @@ if (data.success) {
                       </div>
                     </td>
                     <td className='py-2 text-center w-[20vw] border border-gray-600 text-sm sm:text-lg'>
-                      <div className='flex  flex-col sm:flex-row mx-3 sm:mx-4 items-center gap-3  '>
-                        <span className='w-[15vw] w2 sm:w-[10vw] md:w-[15vw] text-wrap break-words '>{item.Username} </span>
+                      <div className='flex  flex-col sm:flex-row mx-3 sm:mx-4 items-center gap-3 cursor-pointer '>
+                        <span className=' cursor-text w-[15vw] w2 sm:w-[10vw] md:w-[15vw] text-wrap break-words '>{item.Username} </span>
                         <div className='cursor pointer  ' onClick={() => copy(item.Username)}>
 
                           <lord-icon
@@ -263,11 +293,11 @@ if (data.success) {
                       </div>
                     </td>
                     <td className='py-2  text-center w-[15vw] border border-gray-600 text-sm sm:text-lg '>
-                      <div className='flex flex-col sm:flex-row justify-center items-center gap-3 mx-3 '>
-                        <span className=' w-[10vw] overflow-clip text-wrap '>{"*".repeat(item.Password.length)} </span>
+                      <div className='flex flex-col sm:flex-row justify-center items-center gap-3 mx-3 cursor-pointer '>
+                        <span className='cursor-not-allowed w-[10vw] overflow-clip text-wrap '>{"*".repeat(item.Password.length)} </span>
                         <div className='cursor pointer  ' onClick={() => copy(item.Password)}>
 
-                          <lord-icon
+                          <lord-icon 
                             style={{ "width": "25px", "height": "25px", "paddingTop": "7px", "paddingLeft": "3px" }}
                             src="https://cdn.lordicon.com/iykgtsbt.json"
                             trigger="hover"
