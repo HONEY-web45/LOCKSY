@@ -16,7 +16,7 @@ function App() {
     <video
   autoPlay
   loop
-  
+  poster='/fallback.png'
   muted
   playsInline
   className="fixed top-0 left-0 w-full h-full object-cover z-[-1]"

@@ -14,10 +14,10 @@ const HomePage = () => {
 const tl=gsap.timeline()
 
 tl.from(".q",{
-  rotateX:360,
+  // rotateX:360,
   opacity:0,
-  duration:1,
-  scale:0,
+  duration:.5,
+  y:100
  
 
 })
