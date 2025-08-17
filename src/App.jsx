@@ -13,6 +13,8 @@ function App() {
 
   return (
     <div className='relative bg-black/40' >
+         <link rel="preload" as="image" href="/public/fallback.png" />
+    <link rel="preload" as="image" href="/public/b6.mp4" />
     <video
   autoPlay
   loop

@@ -101,4 +101,5 @@ padding-right: 5vw;
       background: url("/public/fallback.png")  ;
       object-fit: cover;
        background-size: cover;
+       background-position: center;
     }
