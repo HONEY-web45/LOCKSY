@@ -97,9 +97,12 @@ padding-right: 5vw;
     }
 
 
-    body{
+    /* body{
       background: url("/public/fallback.png")  ;
       object-fit: cover;
        background-size: cover;
        background-position: center;
-    }
+    } */
+     body{
+      background-color: rgba(0, 0, 0, 0.638);
+     }
