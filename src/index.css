@@ -98,5 +98,7 @@ padding-right: 5vw;
 
 
     body{
-      background: #000;
+      background: url("fallback.png");
+      object-fit: cover;
+        /* no-repeat center center fixed; */
     }
