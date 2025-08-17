@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import gsap from "gsap";
+import { Link } from 'react-router-dom';
 import { useLayoutEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -55,15 +56,15 @@ duration:.3
       <p className="text-lg text-slate-200 mb-6 w">Your Own Password Manager to Store & Secure Credentials.</p>
 
       <div className="flex space-x-4">
-      {isAuthenticated? <a href="/pass"><button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md e" >
+      {isAuthenticated? <Link to="/pass"><button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md e" >
          start here
-        </button></a> : <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md e" onClick={() => loginWithRedirect()}>
+        </button></Link> : <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md e" onClick={() => loginWithRedirect()}>
           start here
         </button>}
         
-        <a href="/about" className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded-md r">
+        <Link to="/about" className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded-md r">
           About Us
-        </a>
+        </Link>
       </div>
     </div>
   );
