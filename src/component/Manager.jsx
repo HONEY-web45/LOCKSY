@@ -259,10 +259,10 @@ if (data.success) {
          : <table className="table-auto mx-[4vw] sm:mx-[10vw] w-[80vw] rounded-xl   overflow-hidden width mar">
             <thead className='bg-blue-200/20 text-white border  border-blue-300/50 rounded-lg shadow  e '>
               <tr className=' '>
-                <th className='py-2 text-sm sm:text-lg border-r'>Site</th>
+                <th className='py-2 text-sm sm:text-lg '>Site</th>
 
-                <th className='py-2 text-sm sm:text-lg border-r'>Username</th>
-                <th className='py-2 text-sm sm:text-lg border-r'>Password</th>
+                <th className='py-2 text-sm sm:text-lg '>Username</th>
+                <th className='py-2 text-sm sm:text-lg '>Password</th>
                 <th className='py-2 px-2 text-sm sm:text-lg'>Actions</th>
               </tr>
             </thead>
