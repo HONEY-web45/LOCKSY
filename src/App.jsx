@@ -8,9 +8,10 @@ import Home from './component/Home'
 import About from './component/About'
 import ContactPage from './component/Contact'
 import PrivateRoute from './component/Private'
+import { useState } from 'react'
 
 function App() {
-
+const [videoStarted, setVideoStarted] = useState(false)
 
 
   return (
@@ -21,7 +22,9 @@ function App() {
     <video
   autoPlay
   loop
-  
+  onPlay={()=>setTimeout(() => {
+    setVideoStarted(true)
+  }, 700)}
   muted
   playsInline
   className="fixed top-0 left-0 w-full h-full animate-fadeIn object-cover z-[-1]"
@@ -30,6 +33,11 @@ function App() {
   Your browser does not support the video tag.
 </video>
 {/* <img src="b5.gif" alt="" className='fixed top-0 left-0 w-full h-full object-cover z-[-1]'  /> */}
+{!videoStarted ? 
+  <div className="fixed inset-0 flex items-center justify-center bg-black/60   text-white z-10">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-red-100"></div>
+  </div>:
+
 
 <Router>
   <Navbar />
@@ -46,7 +54,7 @@ function App() {
 </Router>
 
 
-
+}
 
  
     </div>
