@@ -24,7 +24,7 @@ const [videoStarted, setVideoStarted] = useState(false)
   loop
   onPlay={()=>setTimeout(() => {
     setVideoStarted(true)
-  }, 700)}
+  }, 400)}
   muted
   playsInline
   className="fixed top-0 left-0 w-full h-full animate-fadeIn object-cover z-[-1]"
@@ -34,8 +34,10 @@ const [videoStarted, setVideoStarted] = useState(false)
 </video>
 {/* <img src="b5.gif" alt="" className='fixed top-0 left-0 w-full h-full object-cover z-[-1]'  /> */}
 {!videoStarted ? 
-  <div className="fixed inset-0 flex items-center justify-center bg-black/60   text-white z-10">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-red-100"></div>
+  <div className="fixed inset-0 flex items-center justify-center     z-10">
+     <div className="flex items-center justify-center h-screen">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-red-500"></div>
+  </div>
   </div>:
 
 
