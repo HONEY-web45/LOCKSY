@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
 
@@ -8,6 +8,30 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen1, setIsOpen1] = useState(false);
  
+
+
+
+  const dropdownRef = useRef(null);
+  const sidebarRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen1(false);
+      }
+      if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+    };
+  }, []);
   const toggle = () => {
     setIsOpen(!isOpen);
     
@@ -55,7 +79,7 @@ const Navbar = () => {
 </div> 
 <button className=' hidd  border  focus:outline-none  focus:ring-4  font-medium rounded-lg text-sm px-4 md:px-2 lg:px-4 py-1.5   bg-gray-800 text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700 flex items-center gap-2'><img  src={user.picture} alt="profile"className='rounded-full '   onError={(e) => { e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.nickname)}&background=random&length=1`; }} height={25} width={25} /> <span className=''>{ user.nickname || user.email} </span></button>
         <div id="userDropdown" className={`absolute ${isOpen1?"block":"hidden"}  hid1  -right-4 top-8 mt-2 w-48 bg-gray-900 rounded-md shadow-lg  z-50 text-sm`}>
-    <div onMouseLeave={()=>setIsOpen1(false)} onBlur={()=>setIsOpen1(false)} className="px-4 py-3 border-b border-gray-200">
+    <div  ref={dropdownRef}   className="px-4 py-3 border-b border-gray-200">
       <p className="font-semibold text-white ">Hey, {user.nickname}</p>
     </div>
     <button onClick={()=>logout()} className=" w-full text-left  px-4 py-2 text-sm font-semibold text-white hover:bg-gray-500 flex gap-2  "><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-log-out">
@@ -71,7 +95,7 @@ const Navbar = () => {
          </div>:<button className=' bg-gray-800 border  focus:outline-none  focus:ring-4  font-medium rounded-lg text-sm px-4 py-2    text-white border-gray-600 hover:bg-gray-700 hover:border-gray-600 focus:ring-gray-700' onClick={()=>loginWithRedirect()}>login</button>}
 
 
-        <div onMouseLeave={()=>setIsOpen(false)} onBlur={()=>setIsOpen(false)} className={`fixed top-0 left-0 z-10 h-full w-48 bg-gradient-to-r from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f] text-white  py-3 transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div  ref={sidebarRef}  className={`fixed top-0 left-0 z-10 h-full w-48 bg-gradient-to-r from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f] text-white  py-3 transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
 <div className='flex px-3 items-center justify-between mb-2'>
        <h5 className="text-base font-semibold  uppercase text-gray-400">Menu</h5>   <button onClick={onclose} className=" text-gray-500 text-xl p-1 hover:bg-gray-800 rounded-xl focus:outline-none">&lt;&lt;</button></div>
     <ul className="flex flex-col gap-1 px-4">
